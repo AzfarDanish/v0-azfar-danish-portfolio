@@ -1,9 +1,6 @@
 import type React from "react"
 import "@/app/globals.css"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Azfar Danish - Portfolio",
@@ -18,7 +15,7 @@ export const metadata: Metadata = {
     description: "Personal portfolio of Azfar Danish, a multidisciplinary creative professional",
     siteName: "Azfar Danish Portfolio",
   },
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -28,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth light">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   )
 }

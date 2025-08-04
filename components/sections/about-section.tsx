@@ -17,8 +17,8 @@ export function AboutSection() {
   }, [isInView, controls])
 
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center py-20 bg-muted/30">
-      <div className="container px-6 md:px-12 py-16">
+    <section id="about" className="py-16 bg-gradient-to-b from-background to-muted/20">
+      <div className="container max-w-4xl mx-auto px-6">
         <motion.div
           ref={ref}
           initial="hidden"
@@ -28,70 +28,107 @@ export function AboutSection() {
             visible: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.2,
+                staggerChildren: 0.15,
               },
             },
           }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center"
+          className="space-y-12"
         >
+          {/* Header */}
           <motion.div
             variants={{
-              hidden: { opacity: 0, x: -50 },
-              visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
             }}
-            className="flex flex-col items-center lg:items-start"
+            className="text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center lg:text-left">About Me</h2>
-            <div className="prose max-w-none space-y-4">
-              <p>
-                I'm Azfar Danish, currently a student at Kolej Professional Mara Beranang with a strong passion for design, 3D modeling, and digital content creation. My academic journey has equipped me with a diverse skill set and a drive to excel in creative fields.
+            <h2 className="text-2xl md:text-3xl font-bold mb-2">About Me</h2>
+            <div className="w-12 h-0.5 bg-primary mx-auto"></div>
+          </motion.div>
+
+          {/* Main Content */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"
+          >
+            {/* Profile */}
+            <div className="flex flex-col items-center space-y-4">
+              <Avatar className="w-32 h-32 border-2 border-primary/20">
+                <AvatarImage src="profile_picture.jpg" alt="Azfar Danish" />
+                <AvatarFallback className="text-xl font-semibold">AD</AvatarFallback>
+              </Avatar>
+              <div className="text-center">
+                <h3 className="font-semibold text-lg">Azfar Danish</h3>
+                <p className="text-sm text-muted-foreground">Design Student</p>
+              </div>
+            </div>
+
+            {/* Bio */}
+            <div className="md:col-span-2 space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                Currently a student at <span className="font-medium text-foreground">Kolej Professional Mara Beranang</span> with a strong passion for design, 3D modeling, and digital content creation. I leverage tools like Adobe Creative Suite, Canva, Blender, and SketchUp to create visually compelling and effective designs.
               </p>
-              <p>
-                I have hands-on experience with tools such as Adobe Creative Suite, Canva, Blender, and SketchUp, and I leverage productivity tools like Microsoft Office to manage projects efficiently and deliver quality results.
-              </p>
-              <p>
-                I believe in the power of visual communication and strive to create designs that are both visually appealing and effective in conveying messages. Whether it's brand identity, 3D visualization, or digital marketing assets, I approach each project with creativity and attention to detail.
-              </p>
-              <p>
-                Outside of academics, I enjoy exploring new design trends, learning new tools, and collaborating with peers to push creative boundaries.
+              <p className="text-muted-foreground leading-relaxed">
+                I believe in the power of visual communication and approach each project with creativity and attention to detail, whether it's brand identity, 3D visualization, or digital marketing assets.
               </p>
             </div>
           </motion.div>
 
+          {/* Stats */}
           <motion.div
             variants={{
-              hidden: { opacity: 0, x: 50 },
-              visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 } },
             }}
-            className="flex flex-col items-center space-y-8"
           >
-            <Avatar className="w-48 h-48 border-4 border-primary">
-              <AvatarImage src="/placeholder.svg?height=192&width=192" alt="Azfar Danish" />
-              <AvatarFallback>AD</AvatarFallback>
-            </Avatar>
-
-            <Card className="w-full max-w-md">
-              <CardContent className="p-6 space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <h3 className="font-medium text-muted-foreground">Experience</h3>
-                    <p className="font-bold text-xl">5+ Years</p>
+            <Card className="bg-card/50 backdrop-blur-sm border-muted">
+              <CardContent className="p-6">
+                <div className="grid grid-cols-3 gap-6 text-center">
+                  <div className="space-y-1">
+                    <p className="text-2xl font-bold text-primary">2</p>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wide">Years Experience</p>
                   </div>
-                  <div>
-                    <h3 className="font-medium text-muted-foreground">Projects</h3>
-                    <p className="font-bold text-xl">100+</p>
+                  <div className="space-y-1 border-x border-muted px-4">
+                    <p className="text-2xl font-bold text-primary">5+</p>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wide">Projects</p>
                   </div>
-                  <div>
-                    <h3 className="font-medium text-muted-foreground">Clients</h3>
-                    <p className="font-bold text-xl">50+</p>
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-muted-foreground">Awards</h3>
-                    <p className="font-bold text-xl">10+</p>
+                  <div className="space-y-1">
+                    <p className="text-2xl font-bold text-primary">5+</p>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wide">Awards</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
+          </motion.div>
+
+          {/* Skills */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.3 } },
+            }}
+            className="text-center"
+          >
+            <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
+              {[
+                "Adobe Creative Suite",
+                "Canva",
+                "Blender",
+                "SketchUp",
+                "Microsoft Office",
+                "3D Modeling",
+              ].map((skill, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 text-xs bg-muted/60 text-muted-foreground rounded-full border border-muted hover:bg-muted/80 transition-colors"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
       </div>

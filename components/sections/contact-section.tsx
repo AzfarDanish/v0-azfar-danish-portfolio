@@ -1,15 +1,13 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Facebook, Github, Linkedin, Mail, MapPin } from "lucide-react"
 import Link from "next/link"
 import { motion, useAnimation, useInView } from "framer-motion"
 
 export function ContactSection() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
   const controls = useAnimation()
 
   useEffect(() => {
@@ -19,8 +17,8 @@ export function ContactSection() {
   }, [isInView, controls])
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center py-20">
-      <div className="container px-4 py-16">
+    <section id="contact" className="py-16 bg-gray-50">
+      <div className="max-w-4xl mx-auto px-4">
         <motion.div
           ref={ref}
           initial="hidden"
@@ -29,24 +27,19 @@ export function ContactSection() {
             hidden: { opacity: 0 },
             visible: {
               opacity: 1,
-              transition: {
-                staggerChildren: 0.2,
-              },
-            },
+              transition: { staggerChildren: 0.1 }
+            }
           }}
-          className="space-y-12"
         >
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
             }}
-            className="text-center space-y-4"
+            className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold">Get In Touch</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Interested in working together? Feel free to reach out through any of the channels below.
-            </p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">Contact</h2>
+            <p className="text-gray-600 text-sm">Let's connect and collaborate</p>
           </motion.div>
 
           <motion.div
@@ -54,133 +47,141 @@ export function ContactSection() {
               hidden: { opacity: 0 },
               visible: {
                 opacity: 1,
-                transition: {
-                  staggerChildren: 0.1,
-                },
-              },
+                transition: { staggerChildren: 0.05 }
+              }
             }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
           >
+            {/* Contact Info */}
             <motion.div
               variants={{
                 hidden: { opacity: 0, x: -20 },
-                visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.4 } }
               }}
             >
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle>Contact Information</CardTitle>
-                  <CardDescription>Ways to reach me directly</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
+              <div className="bg-white rounded-lg p-6">
+                <h3 className="font-semibold text-gray-900 mb-4">Get in touch</h3>
+                
+                <div className="space-y-4 mb-6">
                   <div className="flex items-center gap-3">
-                    <Mail className="h-5 w-5 text-muted-foreground" />
-                    <span>azfar.danish@example.com</span>
+                    <Mail className="h-4 w-4 text-blue-500" />
+                    <span className="text-sm text-gray-700">azfardanish009@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <MapPin className="h-5 w-5 text-muted-foreground" />
-                    <span>Kuala Lumpur, Malaysia</span>
+                    <MapPin className="h-4 w-4 text-blue-500" />
+                    <span className="text-sm text-gray-700">KPM Beranang</span>
                   </div>
-                  <div className="pt-4">
-                    <h3 className="text-sm font-medium mb-3">Connect with me</h3>
-                    <div className="flex gap-4">
-                      <Button asChild size="icon" variant="outline" className="rounded-full">
-                        <Link href="https://github.com/azfardanish" aria-label="GitHub">
-                          <Github className="h-5 w-5" />
-                        </Link>
-                      </Button>
-                      <Button asChild size="icon" variant="outline" className="rounded-full">
-                        <Link href="https://linkedin.com/in/azfardanish" aria-label="LinkedIn">
-                          <Linkedin className="h-5 w-5" />
-                        </Link>
-                      </Button>
-                      <Button asChild size="icon" variant="outline" className="rounded-full">
-                        <Link href="https://facebook.com/azfardanish" aria-label="Facebook">
-                          <Facebook className="h-5 w-5" />
-                        </Link>
-                      </Button>
-                    </div>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-medium text-gray-900 mb-3">Connect with me</h4>
+                  <div className="flex gap-3">
+                    <Link 
+                      href="https://github.com/azfardanish" 
+                      className="flex items-center justify-center w-9 h-9 bg-gray-100 hover:bg-blue-100 text-gray-600 hover:text-blue-600 rounded-lg transition-colors"
+                      aria-label="GitHub"
+                    >
+                      <Github className="h-4 w-4" />
+                    </Link>
+                    <Link 
+                      href="https://linkedin.com/in/azfardanish" 
+                      className="flex items-center justify-center w-9 h-9 bg-gray-100 hover:bg-blue-100 text-gray-600 hover:text-blue-600 rounded-lg transition-colors"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                    </Link>
+                    <Link 
+                      href="https://facebook.com/azfardanish" 
+                      className="flex items-center justify-center w-9 h-9 bg-gray-100 hover:bg-blue-100 text-gray-600 hover:text-blue-600 rounded-lg transition-colors"
+                      aria-label="Facebook"
+                    >
+                      <Facebook className="h-4 w-4" />
+                    </Link>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
 
+            {/* Contact Form */}
             <motion.div
               variants={{
                 hidden: { opacity: 0, x: 20 },
-                visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.4 } }
               }}
             >
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle>Send a Message</CardTitle>
-                  <CardDescription>Fill out the form below to get in touch</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <label htmlFor="name" className="text-sm font-medium">
-                          Name
-                        </label>
-                        <input
-                          id="name"
-                          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                          placeholder="Your name"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium">
-                          Email
-                        </label>
-                        <input
-                          id="email"
-                          type="email"
-                          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                          placeholder="Your email"
-                        />
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="subject" className="text-sm font-medium">
-                        Subject
+              <div className="bg-white rounded-lg p-6">
+                <h3 className="font-semibold text-gray-900 mb-4">Send a message</h3>
+                
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label htmlFor="name" className="block text-xs font-medium text-gray-700 mb-1">
+                        Name
                       </label>
                       <input
-                        id="subject"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                        placeholder="Subject of your message"
+                        id="name"
+                        className="w-full px-3 py-2 text-sm border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Your name"
                       />
                     </div>
-                    <div className="space-y-2">
-                      <label htmlFor="message" className="text-sm font-medium">
-                        Message
+                    <div>
+                      <label htmlFor="email" className="block text-xs font-medium text-gray-700 mb-1">
+                        Email
                       </label>
-                      <textarea
-                        id="message"
-                        className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                        placeholder="Your message"
+                      <input
+                        id="email"
+                        type="email"
+                        className="w-full px-3 py-2 text-sm border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Your email"
                       />
                     </div>
-                    <Button type="submit" className="w-full">
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="subject" className="block text-xs font-medium text-gray-700 mb-1">
+                      Subject
+                    </label>
+                    <input
+                      id="subject"
+                      className="w-full px-3 py-2 text-sm border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Subject"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-xs font-medium text-gray-700 mb-1">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      rows={4}
+                      className="w-full px-3 py-2 text-sm border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                      placeholder="Your message"
+                    />
+                  </div>
+                  
+                  <button
+                    type="button"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-md transition-colors"
+                  >
+                    Send Message
+                  </button>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
-        </motion.div>
 
-        <motion.div
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { delay: 0.6 } },
-          }}
-          className="mt-16 pt-8 border-t text-center"
-        >
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Azfar Danish. All rights reserved.
-          </p>
+          <motion.div
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { delay: 0.4 } }
+            }}
+            className="mt-12 pt-6 border-t border-gray-200 text-center"
+          >
+            <p className="text-xs text-gray-500">
+              © {new Date().getFullYear()} Azfar Danish. All rights reserved.
+            </p>
+          </motion.div>
         </motion.div>
       </div>
     </section>
